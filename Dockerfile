@@ -3,11 +3,18 @@ FROM node:14-alpine
 
 # membuat directory baru bernama app (seperti perintah mkdir app) di dalam container.
 WORKDIR /app
+
 # menyalin semua berkas yang ada di working directory pada lokal komputer ke container working directory, yaitu /app.
 COPY . .
+
 # environment variable yang menentukan aplikasi berjalan dalam production mode dan menggunakan container bernama item-db sebagai database host.
 ENV NODE_ENV=production DB_HOST=item-db
+
+# menjalankan perintah npm install --production --unsafe-perm untuk menginstall dependencies yang dibutuhkan aplikasi dan npm run build adalah perintah unruk menjalankan script build pada package.json file
 RUN npm install --production --unsafe-perm && npm run build
+
+# membuka/mengekspos port pada container karena aplikasi berjalan pada port 8080, disini saya juga mengekspos port di 8080
 EXPOSE 8080
 
+# perintah yang akan dieksekusi setelah container berjalan, yang mana dia adalah perintah untuk menjalankan aplikasi
 CMD ["npm","start"]
