@@ -5,7 +5,7 @@ services:
   # nama dari service pertama yang dideklarasi
   item-app:
     # image yang diunduh dari namespace emhando dengan repository item-app yang memiliki tag v1
-    image: emhandho/item-app:v1
+    image: ghcr.io/emhandho/a433-microservices:v1
     # bagian ekspose port, seperti yang kita tahu aplikasi dan dockerfile yang kita unduh mengekspos port 8080,
     # namun disini saya meneruskan port tersebut ke 80 sesuai dengan kriteria submission
     ports:
@@ -14,7 +14,7 @@ services:
     # field ini dapat memiliki lebih dari satu nama service lain, dan service yang memiliki field ini akan dijalankan apabila
     # service dengan nama yang ada dalam field depends_on ini sudah berjalan semua
     depends_on:
-      - item_db
+      - item-db
     # pada bagian adalah field syntax yang memiliki fungsi sama dengan tag --restart pada docker run,
     # yaitu service akan selalu restart apabila service terhenti karena kesalahan yang terjadi pada container nya
     restart: always
