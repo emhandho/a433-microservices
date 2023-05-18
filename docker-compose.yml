@@ -5,7 +5,7 @@ services:
   # nama dari service pertama yang dideklarasi
   item-app:
     # image yang diunduh dari namespace emhando dengan repository item-app yang memiliki tag v1
-    image: ghcr.io/emhandho/a433-microservices:v1
+    image: ghcr.io/emhandho/item-app:v1
     # bagian ekspose port, seperti yang kita tahu aplikasi dan dockerfile yang kita unduh mengekspos port 8080,
     # namun disini saya meneruskan port tersebut ke 80 sesuai dengan kriteria submission
     ports:
@@ -26,6 +26,7 @@ services:
     # deklarasi volume yang akan di mount dengan service item-db
     volumes:
       - app-db:/data/db
+    restart: always
 
 # pendeklarasian volumes yang akan dipakai pada docker compose ini
 volumes:
