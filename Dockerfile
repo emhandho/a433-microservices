@@ -16,5 +16,10 @@ RUN npm install --production --unsafe-perm && npm run build
 # membuka/mengekspos port pada container karena aplikasi berjalan pada port 8080, disini saya juga mengekspos port di 8080
 EXPOSE 8080
 
+# perintah LABEL digunakan untuk menambah metadata pada Docker image, pada dockerfile kali ini label command dibawah
+# digunakan untuk mengintegrasikan Docker image dengan Github Action Workflow, untuk mengoneksikan image/package ke target repository
+LABEL org.opencontainers.image.source=https://github.com/emhandho/a433-microservices
+LABEL org.opencontainers.image.description="Docker images for Dicoding Devops Expert Submission"
+
 # perintah yang akan dieksekusi setelah container berjalan, yang mana dia adalah perintah untuk menjalankan aplikasi
 CMD ["npm","start"]
