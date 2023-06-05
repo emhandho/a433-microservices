@@ -41,3 +41,16 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 27017
+          command:
+            - mongod
+            - /data/db/mongo.conf
+          volumeMounts:
+            - mountPath: /config
+              name: config              
+      volumes:
+        - name: config
+          configMap:
+            name: mongodb-config
+            items:
+              - key: config
+                path: mongo.conf
