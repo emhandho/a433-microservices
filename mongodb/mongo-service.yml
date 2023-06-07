@@ -7,50 +7,51 @@ metadata:
 spec:
   selector:
     db: mongo
+    tier: karsajobs
   ports:
     - port: 27017
       protocol: TCP
-      name: mongodb
   type: ClusterIP
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mongo-db
-  labels:
-    app: karsajobs
-    db: mongo
-spec:
-  replica: 1
-  selector:
-    matchLabels:
-      db: mongo
-  template:
-    metadata:
-      labels:
-        app: karsajobs
-        db: mongo
-    spec:
-      containers:
-        - name: mongo-db
-          image: mongo:latest
-          imagePullPolicy: IfNotPresent
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
-          ports:
-            - containerPort: 27017
-          command:
-            - mongod
-            - /data/db/mongo.conf
-          volumeMounts:
-            - mountPath: /config
-              name: config              
-      volumes:
-        - name: config
-          configMap:
-            name: mongodb-config
-            items:
-              - key: config
-                path: mongo.conf
+  ClusterIP: None
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: mongo-db
+#   labels:
+#     app: karsajobs
+#     db: mongo
+# spec:
+#   replica: 1
+#   selector:
+#     matchLabels:
+#       db: mongo
+#   template:
+#     metadata:
+#       labels:
+#         app: karsajobs
+#         db: mongo
+#     spec:
+#       containers:
+#         - name: mongo-db
+#           image: mongo:latest
+#           imagePullPolicy: IfNotPresent
+#           resources:
+#             limits:
+#               memory: "128Mi"
+#               cpu: "500m"
+#           ports:
+#             - containerPort: 27017
+#           command:
+#             - mongod
+#             - /data/db/mongo.conf
+#           volumeMounts:
+#             - mountPath: /config
+#               name: config              
+#       volumes:
+#         - name: config
+#           configMap:
+#             name: mongodb-config
+#             items:
+#               - key: config
+#                 path: mongo.conf
