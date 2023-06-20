@@ -11,7 +11,7 @@ spec:
       tier: karsajobs
   serviceName: mongodb
   replicas: 2
-  minReadySecond: 10
+  minReadySeconds: 10
   template:
     metadata:
       labels:

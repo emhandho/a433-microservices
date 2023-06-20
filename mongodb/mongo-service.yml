@@ -12,7 +12,6 @@ spec:
     - port: 27017
       protocol: TCP
   type: ClusterIP
-  ClusterIP: None
 # ---
 # apiVersion: apps/v1
 # kind: Deployment
