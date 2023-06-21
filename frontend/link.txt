@@ -1,1 +1,0 @@
-https://github.com/emhandho/a433-microservices/pkgs/container/karsajobs-ui
