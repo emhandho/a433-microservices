@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mongodb-pv-volume
+  name: mongodb-pv
   labels:
     type: local
-spec:
+spec: 
   storageClassName: manual
   capacity:
     storage: 10Gi
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mongodb-pv-claim
+  name: mongodb-pvc x
   labels:
     type: local
 spec:

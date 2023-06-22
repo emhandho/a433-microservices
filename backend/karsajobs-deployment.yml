@@ -4,9 +4,8 @@ metadata:
   name: karsajobs
   labels:
     app: karsajobs
-
 spec:
-  replica: 1
+  replicas: 1
   selector:
     matchLabels:
       app: karsajobs
