@@ -3,7 +3,7 @@
 # perintah untuk build docker image dengan nama image item-app dan tag v1
 docker build -t ghcr.io/emhandho/karsajobs:latest . && \
 	# perintah untuk menyimpan environment variable untuk merahasiakan access_token GitHub Packages
-	export CR_PAT="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" && \
+	export CR_PAT="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" && \
 	# perintah untuk login ke GitHub Pakcages menggunakan access_token yang sudah dideklarasi pada perintah sebelumnya
 	echo $CR_PAT | docker login ghcr.io -u emhandho --password-stdin && \
 	# perintah untuk mengunggah docker image dari lokal ke GitHub Packages
