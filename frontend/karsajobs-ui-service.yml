@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: karsajobs-ui
   labels:
-    app: karsajobs-ui
+    app: microservices
 spec:
+  type: NodePort
   ports:
   - port: 8000
+    nodePort: 32023
   selector:
-    app: karsajobs-ui
-  type: NodePort
+    tier: frontend

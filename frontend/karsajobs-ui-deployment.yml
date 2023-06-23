@@ -3,22 +3,21 @@ kind: Deployment
 metadata:
   name: karsajobs-ui
   labels:
-    app: karsajobs-ui
+    app: microservices
+    tier: frontend
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: karsajobs-ui
+      tier: frontend
   template:
     metadata:
       labels:
-        app: karsajobs-ui
+        app: microservices
+        tier: frontend
     spec:
       containers:
       - name: karsajobs-ui
         image: ghcr.io/emhandho/karsajobs-ui:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 8000
