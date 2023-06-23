@@ -18,11 +18,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
   labels:
-    type: local
+    db: mongodb
+    app: database
 spec:
   storageClassName: manual
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
   accessModes:
     - ReadWriteOnce
