@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  labels:
+    app: final-project
+spec:
+  selector:
+    tier: order
+  ports:
+  - port: 3000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+spec:
+  selector:
+    matchLabels:
+      tier: order
+  template:
+    metadata:
+      labels:
+        app: final-project
+        tier: order
+    spec:
+      containers:
+      - name: order-service
+        image: ghcr.io/emhandho/fp-order-service:latest
+        ports:
+        - containerPort: 3000

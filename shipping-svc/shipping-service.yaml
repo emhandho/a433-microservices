@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping-service
+  labels:
+    app: final-project
+spec:
+  selector:
+    tier: shipping
+  ports:
+  - port: 3001
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping-service
+spec:
+  selector:
+    matchLabels:
+      tier: shipping
+  template:
+    metadata:
+      labels:
+        app: final-project
+        tier: shipping
+    spec:
+      containers:
+      - name: shipping-service
+        image: ghcr.io/emhandho/fp-shipping-service:latest
+        ports:
+        - containerPort: 3001
