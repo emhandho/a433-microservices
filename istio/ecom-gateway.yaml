@@ -1,6 +1,6 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
-meetadata:
+metadata:
   name: ecommerce-gateway
 spec:
   selector:
@@ -25,9 +25,9 @@ spec:
   http:
   - match:
     - uri:
-      exact: /order
+        exact: /order
     route:
     - destination:
         host: order-service
-        ports:
+        port:
           number: 3000
