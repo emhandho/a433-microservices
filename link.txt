@@ -1,0 +1,1 @@
+https://github.com/emhandho/a433-microservices/pkgs/container/fp-order-service
